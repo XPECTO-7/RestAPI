@@ -51,6 +51,18 @@ def update_task(task_id):
     task["done"] = request.json.get("done", task["done"])
     return jsonify(task)
 
+#Patch Method
+@app.route('/tasks/<int:task_id>', methods=['PATCH'])
+def patch_task(task_id):
+    task = next((task for task in tasks if task["id"] == task_id), None)
+    if not task:
+        return jsonify({"error": "Task not found"}), 404
+
+    data = request.get_json()
+    task.update(data)
+    return jsonify(task)
+
+
 # Delete a task
 @app.route('/tasks/<int:task_id>', methods=['DELETE'])
 def delete_task(task_id):
