@@ -4,8 +4,25 @@ app = Flask(__name__)
 
 # Sample data store
 tasks = [
-    {"id": 1, "title": "Task 1", "description": "Learn Flask", "done": False},
-    {"id": 2, "title": "Task 2", "description": "Build a REST API", "done": False},
+    {
+    "description": "Learn Flask",
+    "done": True,
+    "id": 1,
+    "title": "Task 1"
+  },
+  
+  {
+    "description": "Learn RestAPI",
+    "done": True,
+    "id": 2,
+    "title": "Task 2"
+  },
+  {
+    "description": "Learn Swagger",
+    "done": True,
+    "id": 3,
+    "title": "Task 3"
+  }
 ]
 
 # Get all tasks
@@ -61,6 +78,7 @@ def patch_task(task_id):
     data = request.get_json()
     task.update(data)
     return jsonify(task)
+
 
 
 # Delete a task
